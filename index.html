@@ -1,183 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>PBL Presentation | 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
-        .gradient-text { background: linear-gradient(90deg,#60a5fa,#a855f7); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PBL Presentation | 2026</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body { background-color: #020617; color: #f8fafc; font-family: Arial; }
+.glass { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 20px; }
+</style>
 </head>
 
-<body>
+<body onload="startTimer()">
 
-<nav class="fixed w-full z-50 glass px-8 py-4 flex justify-between items-center">
-    <h1 class="font-black text-xl">PBL 2026</h1>
-    <div class="flex gap-6 text-sm">
-        <a href="#problem">Problem</a>
-        <a href="#methodology">Methodology</a>
-        <a href="#results">Results</a>
-    </div>
-</nav>
+<div id="timer" style="position:fixed; bottom:20px; right:20px; background:white; color:black; padding:15px; border-radius:10px; font-size:20px;">
+00:00
+</div>
 
-<main class="max-w-6xl mx-auto px-6 pt-32 pb-20 space-y-24">
+<div style="max-width:900px; margin:auto; padding:40px;">
 
-<!-- TITLE -->
-<section class="text-center">
-    <h1 class="text-6xl font-extrabold mb-6">
-        <span class="gradient-text">Hybrid SOS Trigger Analysis System</span>
-    </h1>
-    <p class="text-slate-400 max-w-2xl mx-auto text-lg">
-        Improving reliability of automatic SOS trigger mechanisms using temporal validation 
-        and multi-condition motion analysis.
-    </p>
-</section>
+<h1 style="font-size:40px; font-weight:bold;">Smart Safety Detection System</h1>
 
-<!-- PROBLEM -->
-<section id="problem" class="grid md:grid-cols-2 gap-10">
+<p style="margin-top:20px;">
+This project focuses on detecting abnormal human motion using accelerometer data.
+The system analyzes magnitude values derived from x, y, and z coordinates and applies
+multiple conditions such as duration filtering, inactivity detection, and spike analysis
+to determine whether an emergency situation has occurred.
+</p>
 
-<div class="glass p-8 rounded-2xl border-l-4 border-blue-500">
-<h2 class="text-2xl font-bold mb-4">Problem Statement</h2>
-<p class="text-slate-400 text-justify">
-Wearable SOS systems rely on acceleration threshold-based triggering, which fails to distinguish between 
-normal motion and emergency situations. Activities such as running or jumping generate short-duration spikes 
-that exceed thresholds, causing false alerts. These false triggers reduce reliability and may lead to alarm fatigue.
+<div class="glass" style="margin-top:30px;">
+<h2>Problem Statement</h2>
+<p>
+Existing systems rely only on threshold-based detection which leads to false alarms.
+This system improves reliability by combining multiple logical conditions to identify
+real abnormal patterns instead of isolated spikes.
 </p>
 </div>
 
-<div class="space-y-6">
-
-<div class="glass p-6 rounded-xl border-r-4 border-blue-400">
-<h3 class="text-blue-400 font-bold mb-2">Literature Review</h3>
-<p class="text-sm text-slate-400">
-Mubashir et al. (2013) studied fall detection systems in healthcare environments such as hospitals and elderly care. 
-They found that threshold-based systems are simple but produce high false positives during daily activities.
-
-Li et al. (2019) introduced temporal filtering, showing that sustained acceleration is more reliable than isolated spikes.
-
-Advanced ML-based systems improve accuracy but require higher computation, making them unsuitable for embedded systems.
-
-This project adapts these concepts to safety systems by introducing duration-based validation, inactivity detection, 
-and repeated spike analysis while maintaining low computational cost.
+<div class="glass" style="margin-top:20px;">
+<h2>Methodology</h2>
+<p>
+The system processes accelerometer dataset values and computes magnitude.
+A sliding window approach is used to simulate real-time monitoring.
+Detection is based on duration filtering, inactivity detection, and pattern recognition.
 </p>
 </div>
 
-<div class="glass p-6 rounded-xl border-r-4 border-purple-400">
-<h3 class="text-purple-400 font-bold mb-2">Research Gap</h3>
-<p class="text-sm text-slate-400">
-Existing embedded systems lack multi-condition validation and fail to distinguish transient spikes from sustained motion. 
-This project introduces a layered detection mechanism to improve reliability.
+<div class="glass" style="margin-top:20px;">
+<h2>Innovation</h2>
+<p>
+The system uses a hybrid logic combining multiple parameters rather than relying on
+a single threshold. This reduces false positives and improves detection accuracy.
 </p>
 </div>
 
-</div>
-</section>
-
-<!-- METHODOLOGY -->
-<section id="methodology" class="space-y-12">
-
-<h2 class="text-3xl font-bold text-center">System Methodology</h2>
-
-<div class="grid md:grid-cols-3 gap-8">
-
-<div class="glass p-6 rounded-xl text-center">
-<i class="fas fa-database text-blue-400 text-2xl mb-3"></i>
-<h3 class="font-bold mb-2">Dataset</h3>
-<p class="text-sm text-slate-400">
-Simulated motion data representing walking, running, jumping, fall, and irregular movement patterns.
+<div class="glass" style="margin-top:20px;">
+<h2>Results</h2>
+<p>
+The system successfully differentiates between normal and abnormal activities.
+Controlled anomaly testing was used to validate detection due to limited availability
+of real-world emergency datasets.
 </p>
 </div>
 
-<div class="glass p-6 rounded-xl text-center">
-<i class="fas fa-microchip text-purple-400 text-2xl mb-3"></i>
-<h3 class="font-bold mb-2">Model</h3>
-<p class="text-sm text-slate-400">
-Threshold-based detection enhanced with duration filtering to detect sustained abnormal motion.
-</p>
-</div>
+<div class="glass" style="margin-top:20px;">
+<h2>Live Demo</h2>
 
-<div class="glass p-6 rounded-xl text-center">
-<i class="fas fa-cogs text-green-400 text-2xl mb-3"></i>
-<h3 class="font-bold mb-2">Advanced Logic</h3>
-<p class="text-sm text-slate-400">
-Includes inactivity detection after impact and repeated spike analysis to detect unstable conditions.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- RESULTS -->
-<section id="results" class="glass p-10 rounded-2xl">
-
-<h2 class="text-2xl font-bold text-center mb-8">Results & Analysis</h2>
-
-<div class="grid md:grid-cols-2 gap-10 items-center">
-
-<div style="height:300px;">
-    <canvas id="chart"></canvas>
-</div>
-
-<div>
-<p class="text-slate-400 text-justify">
-Threshold-only detection produced false alerts during jumping. Duration-based filtering removed these errors. 
-Additional validation further improved detection accuracy.
+<p>
+Code:
+<a href="https://github.com/nehalgupt22/hybrid-sos-trigger" target="_blank" style="color:lightblue;">
+View Python Code
+</a>
 </p>
 
-<h1 class="text-4xl mt-6 text-blue-400 font-bold">92%</h1>
-<p class="text-sm text-slate-500">Reliability Improvement</p>
-</div>
+<p>
+Dataset:
+<a href="https://www.kaggle.com/datasets/uciml/human-activity-recognition-with-smartphones?resource=download" target="_blank" style="color:lightblue;">
+View Dataset
+</a>
+</p>
 
 </div>
 
-</section>
-
-<!-- FOOTER -->
-<section class="text-center pt-10 border-t border-slate-800">
-<p class="text-slate-400 font-bold">Nehal Gupta</p>
-<p class="text-slate-500 text-sm">2427030019</p>
-<p class="text-slate-500 text-sm mt-2">Guide: Dr. Girish Sharma</p>
-</section>
-
-</main>
+</div>
 
 <script>
-const ctx = document.getElementById('chart').getContext('2d');
-
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Threshold Only', 'Improved System'],
-        datasets: [{
-            data: [70, 92],
-            backgroundColor: ['#1e293b', '#3b82f6'],
-            borderRadius: 10,
-            barThickness: 60
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-            y: {
-                beginAtZero: true,
-                max: 100,
-                ticks: { color: '#94a3b8' },
-                grid: { color: '#ffffff10' }
-            },
-            x: {
-                ticks: { color: '#94a3b8' },
-                grid: { display: false }
-            }
-        }
-    }
-});
+let sec = 0;
+function startTimer(){
+    setInterval(() => {
+        sec++;
+        let m = Math.floor(sec/60);
+        let s = sec % 60;
+        document.getElementById("timer").innerText =
+            String(m).padStart(2,'0') + ":" + String(s).padStart(2,'0');
+    }, 1000);
+}
 </script>
 
 </body>
