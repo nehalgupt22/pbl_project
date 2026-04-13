@@ -7,124 +7,112 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        body { background-color: #020617; color: #f8fafc; font-family: Arial; }
-        .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
 
-        #timerContainer {
-            background: white;
-            color: black;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            border-radius: 15px;
-            font-size: 24px;
-            font-weight: bold;
-        }
+        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); }
+
+        #timerContainer { background: #ffffff; color: #020617; border: 3px solid #3b82f6; }
     </style>
 </head>
 
 <body onload="startTimer()">
 
-<!-- TIMER -->
-<div id="timerContainer">
-    <span id="displayTime">00:00</span>
+<div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4">
+    <span id="displayTime" class="text-3xl font-bold">00:00</span>
 </div>
 
-<!-- NAV -->
-<nav class="fixed w-full glass px-8 py-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">PBL 2026</h1>
-    <div class="flex gap-6">
+<nav class="fixed w-full z-50 glass px-8 py-4 flex justify-between">
+    <h1 class="font-bold">PBL 2026</h1>
+    <div class="flex gap-6 text-sm">
         <a href="#problem">Problem</a>
         <a href="#methodology">Methodology</a>
         <a href="#results">Results</a>
     </div>
 </nav>
 
-<!-- MAIN -->
-<main class="max-w-6xl mx-auto px-6 pt-32 pb-20 space-y-20">
+<main class="max-w-6xl mx-auto px-6 pt-40 space-y-32">
 
 <section class="text-center">
-    <h1 class="text-5xl font-bold">Smart Safety Detection System</h1>
-    <p class="mt-6 text-gray-400 max-w-2xl mx-auto">
-        This project detects abnormal human motion using accelerometer data.
-        Magnitude is calculated from x, y, z values and analyzed using duration filtering,
-        inactivity detection, and spike patterns.
+    <h1 class="text-6xl font-extrabold">Smart Safety Detection System</h1>
+    <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
+        This project detects abnormal human motion using accelerometer data. 
+        It combines magnitude analysis, duration filtering, inactivity detection, 
+        and spike patterns to identify emergency situations.
     </p>
 </section>
 
-<!-- PROBLEM -->
-<section id="problem" class="grid md:grid-cols-2 gap-10">
-    <div class="glass">
-        <h2 class="text-2xl font-bold mb-4">Problem Statement</h2>
-        <p>
-            Traditional systems rely only on threshold-based detection, which leads to false alarms.
+<section id="problem" class="grid md:grid-cols-2 gap-12">
+
+    <div class="glass p-10 rounded-3xl">
+        <h2 class="text-3xl font-bold mb-6">Problem Statement</h2>
+        <p class="text-slate-400">
+            Traditional systems rely only on threshold-based detection, leading to false alarms.
             This project improves reliability by combining multiple logical conditions to detect real abnormal patterns.
         </p>
     </div>
 
     <div class="space-y-6">
-        <div class="glass">
+
+        <div class="glass p-6 rounded-2xl">
             <h3 class="font-bold mb-2">Literature Review</h3>
-            <p>
+            <p class="text-slate-400 text-sm">
                 Fall detection systems are widely used in healthcare and elderly monitoring.
-                Most systems rely on accelerometer data and simple threshold methods, which can lead to inaccuracies.
-                Our system improves this by incorporating duration and inactivity-based logic.
+                Most rely on accelerometer data and simple threshold methods, which often lead to inaccurate detection.
+                This system improves upon existing approaches by incorporating duration filtering and inactivity detection,
+                making detection more reliable and robust.
             </p>
         </div>
 
-        <div class="glass">
+        <div class="glass p-6 rounded-2xl">
             <h3 class="font-bold mb-2">Innovation</h3>
-            <p>
-                This system uses hybrid detection combining multiple parameters rather than a single threshold,
-                reducing false positives and improving detection accuracy.
+            <p class="text-slate-400 text-sm">
+                The system uses hybrid detection combining multiple parameters instead of a single threshold.
+                This reduces false positives and improves detection accuracy significantly.
             </p>
         </div>
+
     </div>
 </section>
 
-<!-- METHODOLOGY -->
 <section id="methodology">
-    <h2 class="text-3xl font-bold text-center mb-10">Methodology</h2>
+    <h2 class="text-4xl font-bold text-center mb-10">Methodology</h2>
 
-    <div class="grid md:grid-cols-3 gap-6">
-        <div class="glass text-center">
-            <h3 class="font-bold">Dataset</h3>
-            <p class="text-sm text-gray-400">
-                Real accelerometer dataset from Kaggle is used for processing motion values.
+    <div class="grid md:grid-cols-3 gap-8">
+
+        <div class="glass p-8 text-center rounded-2xl">
+            <h3 class="font-bold mb-2">Dataset</h3>
+            <p class="text-slate-400 text-sm">
+                Real accelerometer dataset from Kaggle used for motion analysis.
             </p>
         </div>
 
-        <div class="glass text-center">
-            <h3 class="font-bold">Processing</h3>
-            <p class="text-sm text-gray-400">
-                Magnitude is calculated from x, y, z values and analyzed using sliding window logic.
+        <div class="glass p-8 text-center rounded-2xl">
+            <h3 class="font-bold mb-2">Processing</h3>
+            <p class="text-slate-400 text-sm">
+                Magnitude is computed from x, y, z values and analyzed using sliding window logic.
             </p>
         </div>
 
-        <div class="glass text-center">
-            <h3 class="font-bold">Live Demo</h3>
-            <a href="https://github.com/nehalgupt22/hybrid-sos-trigger" target="_blank" class="text-blue-400">
-                View Code
-            </a>
+        <div class="glass p-8 text-center rounded-2xl">
+            <h3 class="font-bold mb-4">Live Demo</h3>
+            <a href="https://github.com/nehalgupt22/hybrid-sos-trigger" target="_blank" class="text-blue-400">View Code</a>
             <br><br>
-            <a href="https://www.kaggle.com/datasets/uciml/human-activity-recognition-with-smartphones?resource=download" target="_blank" class="text-blue-400">
-                Dataset Source
-            </a>
+            <a href="https://www.kaggle.com/datasets/uciml/human-activity-recognition-with-smartphones?resource=download" target="_blank" class="text-blue-400">Dataset</a>
         </div>
+
     </div>
 </section>
 
-<!-- RESULTS -->
-<section id="results" class="glass p-10">
+<section id="results" class="glass p-12 rounded-3xl">
     <h2 class="text-3xl font-bold text-center mb-10">Results</h2>
 
-    <p class="text-gray-400 text-center max-w-2xl mx-auto">
-        The system differentiates between normal and abnormal motion.
-        Due to limited availability of real emergency datasets, controlled anomaly injection
-        was used to validate detection logic.
+    <p class="text-slate-400 text-center max-w-2xl mx-auto">
+        The system successfully distinguishes between normal and abnormal motion patterns.
+        Controlled anomaly injection was used due to lack of real emergency datasets.
     </p>
 
     <div class="h-64 mt-10">
@@ -134,7 +122,6 @@
 
 </main>
 
-<!-- SCRIPT -->
 <script>
 let sec = 0;
 function startTimer(){
@@ -147,19 +134,17 @@ function startTimer(){
     }, 1000);
 }
 
-// chart
 const ctx = document.getElementById('chart').getContext('2d');
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Normal Detection', 'Abnormal Detection'],
+        labels: ['Existing System', 'Our System'],
         datasets: [{
-            data: [70, 90]
+            data: [65, 90],
+            backgroundColor: ['#1e293b', '#3b82f6']
         }]
     },
-    options: {
-        plugins: { legend: { display: false } }
-    }
+    options: { plugins: { legend: { display: false } } }
 });
 </script>
 
