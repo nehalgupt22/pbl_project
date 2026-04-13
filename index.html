@@ -10,58 +10,66 @@
 <style>
 body { background-color: #020617; color: #f8fafc; font-family: Arial; }
 .glass { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 20px; }
+#timer { background: white; color: black; padding: 10px 20px; border-radius: 10px; }
 </style>
 </head>
 
 <body onload="startTimer()">
 
-<div id="timer" style="position:fixed; bottom:20px; right:20px; background:white; color:black; padding:15px; border-radius:10px; font-size:20px;">
+<div id="timer" style="position:fixed; bottom:20px; right:20px;">
 00:00
 </div>
 
-<div style="max-width:900px; margin:auto; padding:40px;">
+<div style="max-width:1000px; margin:auto; padding:40px;">
 
 <h1 style="font-size:40px; font-weight:bold;">Smart Safety Detection System</h1>
 
 <p style="margin-top:20px;">
-This project focuses on detecting abnormal human motion using accelerometer data.
-The system analyzes magnitude values derived from x, y, and z coordinates and applies
-multiple conditions such as duration filtering, inactivity detection, and spike analysis
-to determine whether an emergency situation has occurred.
+This project detects abnormal human motion using accelerometer data.
+Magnitude is calculated from x, y, z values and analyzed using duration filtering,
+inactivity detection, and spike patterns.
 </p>
 
 <div class="glass" style="margin-top:30px;">
 <h2>Problem Statement</h2>
 <p>
-Existing systems rely only on threshold-based detection which leads to false alarms.
-This system improves reliability by combining multiple logical conditions to identify
-real abnormal patterns instead of isolated spikes.
+Single-threshold systems generate false alarms. This project improves detection by combining
+multiple conditions to identify real abnormal patterns.
+</p>
+</div>
+
+<div class="glass" style="margin-top:20px;">
+<h2>Literature Review</h2>
+<p>
+Existing fall detection systems use accelerometer and gyroscope data in healthcare
+applications such as elderly monitoring. Many rely only on threshold-based methods,
+which can lead to inaccurate detection. Our approach improves upon this by incorporating
+duration filtering and inactivity-based analysis.
 </p>
 </div>
 
 <div class="glass" style="margin-top:20px;">
 <h2>Methodology</h2>
 <p>
-The system processes accelerometer dataset values and computes magnitude.
-A sliding window approach is used to simulate real-time monitoring.
-Detection is based on duration filtering, inactivity detection, and pattern recognition.
+The system processes real dataset values and computes magnitude. A sliding window approach
+is used to simulate real-time monitoring. Detection is based on sustained spikes,
+post-event inactivity, and repeated abnormal patterns.
 </p>
 </div>
 
 <div class="glass" style="margin-top:20px;">
 <h2>Innovation</h2>
 <p>
-The system uses a hybrid logic combining multiple parameters rather than relying on
-a single threshold. This reduces false positives and improves detection accuracy.
+The system uses hybrid detection combining multiple parameters rather than relying on a
+single threshold. This reduces false positives and improves reliability.
 </p>
 </div>
 
 <div class="glass" style="margin-top:20px;">
 <h2>Results</h2>
 <p>
-The system successfully differentiates between normal and abnormal activities.
-Controlled anomaly testing was used to validate detection due to limited availability
-of real-world emergency datasets.
+The system differentiates between normal and abnormal motion. Due to limited availability
+of real emergency datasets, controlled anomaly testing was used to validate system behavior.
 </p>
 </div>
 
@@ -71,14 +79,14 @@ of real-world emergency datasets.
 <p>
 Code:
 <a href="https://github.com/nehalgupt22/hybrid-sos-trigger" target="_blank" style="color:lightblue;">
-View Python Code
+View GitHub Repository
 </a>
 </p>
 
 <p>
 Dataset:
 <a href="https://www.kaggle.com/datasets/uciml/human-activity-recognition-with-smartphones?resource=download" target="_blank" style="color:lightblue;">
-View Dataset
+View Dataset Source
 </a>
 </p>
 
