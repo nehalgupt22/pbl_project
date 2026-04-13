@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,8 +32,8 @@ DOCTYPE html>
         <span class="gradient-text">Hybrid SOS Trigger Analysis System</span>
     </h1>
     <p class="text-slate-400 max-w-2xl mx-auto text-lg">
-        Improving reliability of automatic SOS trigger mechanisms in wearable safety systems 
-        using temporal validation and multi-condition motion analysis.
+        Improving reliability of automatic SOS trigger mechanisms using temporal validation 
+        and multi-condition motion analysis.
     </p>
 </section>
 
@@ -45,9 +45,7 @@ DOCTYPE html>
 <p class="text-slate-400 text-justify">
 Wearable SOS systems rely on acceleration threshold-based triggering, which fails to distinguish between 
 normal motion and emergency situations. Activities such as running or jumping generate short-duration spikes 
-that exceed thresholds, causing false alerts. These repeated false triggers reduce reliability and may lead 
-to alarm fatigue, decreasing response effectiveness. Therefore, there is a need for improving detection accuracy 
-without increasing hardware complexity in embedded systems.
+that exceed thresholds, causing false alerts. These false triggers reduce reliability and may lead to alarm fatigue.
 </p>
 </div>
 
@@ -56,32 +54,23 @@ without increasing hardware complexity in embedded systems.
 <div class="glass p-6 rounded-xl border-r-4 border-blue-400">
 <h3 class="text-blue-400 font-bold mb-2">Literature Review</h3>
 <p class="text-sm text-slate-400">
-Mubashir et al. (2013) conducted a comprehensive survey on fall detection systems used primarily in healthcare 
-applications such as elderly monitoring in hospitals and assisted living environments. Their study highlighted 
-that threshold-based detection methods are widely used due to their simplicity and low computational cost. 
-However, they reported that these systems produce high false positives during daily activities like running, 
-jumping, or sudden movement.
+Mubashir et al. (2013) studied fall detection systems in healthcare environments such as hospitals and elderly care. 
+They found that threshold-based systems are simple but produce high false positives during daily activities.
 
-Li et al. (2019) proposed improvements in wearable monitoring systems by introducing temporal filtering. 
-Their work demonstrated that considering the duration of abnormal acceleration significantly improves detection 
-accuracy, as real fall events exhibit sustained motion rather than isolated spikes.
+Li et al. (2019) introduced temporal filtering, showing that sustained acceleration is more reliable than isolated spikes.
 
-Other advanced approaches using machine learning and sensor fusion have been applied in medical monitoring systems 
-to improve accuracy. However, these solutions require higher computational power, memory, and training data, making 
-them unsuitable for low-cost embedded safety devices.
+Advanced ML-based systems improve accuracy but require higher computation, making them unsuitable for embedded systems.
 
-This project adapts these research findings from healthcare systems to personal safety applications. It introduces 
-a lightweight multi-condition detection mechanism combining duration validation, inactivity detection, and repeated 
-spike analysis to improve reliability without increasing hardware complexity.
+This project adapts these concepts to safety systems by introducing duration-based validation, inactivity detection, 
+and repeated spike analysis while maintaining low computational cost.
 </p>
 </div>
 
 <div class="glass p-6 rounded-xl border-r-4 border-purple-400">
 <h3 class="text-purple-400 font-bold mb-2">Research Gap</h3>
 <p class="text-sm text-slate-400">
-Most embedded SOS systems still rely on simple threshold-based triggering and do not validate motion over time. 
-They fail to distinguish between transient spikes and sustained abnormal motion. This project addresses this gap 
-by introducing a structured multi-layer detection mechanism suitable for embedded deployment.
+Existing embedded systems lack multi-condition validation and fail to distinguish transient spikes from sustained motion. 
+This project introduces a layered detection mechanism to improve reliability.
 </p>
 </div>
 
@@ -99,7 +88,7 @@ by introducing a structured multi-layer detection mechanism suitable for embedde
 <i class="fas fa-database text-blue-400 text-2xl mb-3"></i>
 <h3 class="font-bold mb-2">Dataset</h3>
 <p class="text-sm text-slate-400">
-Simulated accelerometer data representing walking, running, jumping, fall, and irregular motion patterns.
+Simulated motion data representing walking, running, jumping, fall, and irregular movement patterns.
 </p>
 </div>
 
@@ -107,8 +96,7 @@ Simulated accelerometer data representing walking, running, jumping, fall, and i
 <i class="fas fa-microchip text-purple-400 text-2xl mb-3"></i>
 <h3 class="font-bold mb-2">Model</h3>
 <p class="text-sm text-slate-400">
-Detection begins with threshold validation and is enhanced using duration-based filtering to ensure 
-only sustained abnormal motion triggers alerts.
+Threshold-based detection enhanced with duration filtering to detect sustained abnormal motion.
 </p>
 </div>
 
@@ -116,17 +104,11 @@ only sustained abnormal motion triggers alerts.
 <i class="fas fa-cogs text-green-400 text-2xl mb-3"></i>
 <h3 class="font-bold mb-2">Advanced Logic</h3>
 <p class="text-sm text-slate-400">
-Further validation includes inactivity detection after impact and repeated spike pattern analysis 
-to detect unstable or distress motion conditions.
+Includes inactivity detection after impact and repeated spike analysis to detect unstable conditions.
 </p>
 </div>
 
 </div>
-
-<p class="text-center text-slate-400 max-w-3xl mx-auto">
-The system compares threshold-only detection with duration-based and multi-condition validation approaches 
-to evaluate improvements in reliability and reduction in false triggers.
-</p>
 
 </section>
 
@@ -137,13 +119,14 @@ to evaluate improvements in reliability and reduction in false triggers.
 
 <div class="grid md:grid-cols-2 gap-10 items-center">
 
-<canvas id="chart"></canvas>
+<div style="height:300px;">
+    <canvas id="chart"></canvas>
+</div>
 
 <div>
 <p class="text-slate-400 text-justify">
-Threshold-only detection produced false alerts during short-duration spikes such as jumping. 
-Duration-based filtering eliminated these false positives. Additional validation using inactivity 
-and repeated spike patterns further improved detection accuracy and reliability.
+Threshold-only detection produced false alerts during jumping. Duration-based filtering removed these errors. 
+Additional validation further improved detection accuracy.
 </p>
 
 <h1 class="text-4xl mt-6 text-blue-400 font-bold">92%</h1>
@@ -164,7 +147,7 @@ and repeated spike patterns further improved detection accuracy and reliability.
 </main>
 
 <script>
-const ctx = document.getElementById('chart');
+const ctx = document.getElementById('chart').getContext('2d');
 
 new Chart(ctx, {
     type: 'bar',
@@ -172,11 +155,27 @@ new Chart(ctx, {
         labels: ['Threshold Only', 'Improved System'],
         datasets: [{
             data: [70, 92],
-            backgroundColor: ['#1e293b','#3b82f6']
+            backgroundColor: ['#1e293b', '#3b82f6'],
+            borderRadius: 10,
+            barThickness: 60
         }]
     },
     options: {
-        plugins: { legend: { display: false } }
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100,
+                ticks: { color: '#94a3b8' },
+                grid: { color: '#ffffff10' }
+            },
+            x: {
+                ticks: { color: '#94a3b8' },
+                grid: { display: false }
+            }
+        }
     }
 });
 </script>
